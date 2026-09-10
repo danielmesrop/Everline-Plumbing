@@ -5,15 +5,18 @@ import Gallery from "@/components/Gallery";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import { getGoogleReviews } from "@/lib/google-reviews";
 
-export default function Home() {
+export default async function Home() {
+  const googleReviews = await getGoogleReviews();
+
   return (
     <main>
       <Header />
       <Hero />
       <Services />
       <Gallery />
-      <Testimonials />
+      <Testimonials googleReviews={googleReviews} />
       <Contact />
       <Footer />
     </main>
