@@ -5,11 +5,9 @@ import {
   TestimonialsColumn,
   type Testimonial,
 } from "@/components/ui/testimonial-v2";
-import type { GoogleReviewsResult } from "@/lib/google-reviews";
 
-// Real reviews fetched at build time as a fallback, in case the live
-// Google Places API call ever fails at request time.
-const FALLBACK_REVIEWS: Testimonial[] = [
+// Real Google reviews for Everline Plumbing, hardcoded.
+const REVIEWS: Testimonial[] = [
   {
     text: "Hard working team that is on time and always delivers great results! Highly recommend",
     image:
@@ -47,6 +45,10 @@ const FALLBACK_REVIEWS: Testimonial[] = [
   },
 ];
 
+const OVERALL_RATING = 5.0;
+const TOTAL_REVIEW_COUNT = 14;
+const GOOGLE_MAPS_URI = "https://maps.google.com/?cid=15546073881954974120";
+
 function splitIntoColumns<T>(items: T[], columnCount: number): T[][] {
   const columns: T[][] = Array.from({ length: columnCount }, () => []);
   items.forEach((item, i) => columns[i % columnCount].push(item));
@@ -72,28 +74,8 @@ function Stars({ rating }: { rating: number }) {
   );
 }
 
-export default function Testimonials({
-  googleReviews,
-}: {
-  googleReviews?: GoogleReviewsResult;
-}) {
-  const testimonials: Testimonial[] =
-    googleReviews && googleReviews.reviews.length > 0
-      ? googleReviews.reviews.map((r) => ({
-          text: r.text,
-          image: r.image ?? "",
-          name: r.name,
-          role: r.role,
-        }))
-      : FALLBACK_REVIEWS;
-
-  const columns = splitIntoColumns(
-    testimonials,
-    Math.min(3, testimonials.length)
-  );
-
-  const overallRating = googleReviews?.overallRating ?? 5;
-  const totalReviewCount = googleReviews?.totalReviewCount ?? null;
+export default function Testimonials() {
+  const columns = splitIntoColumns(REVIEWS, Math.min(3, REVIEWS.length));
 
   return (
     <section
@@ -115,10 +97,10 @@ export default function Testimonials({
             What Our Customers Say
           </h2>
 
-          <Stars rating={overallRating} />
+          <Stars rating={OVERALL_RATING} />
           <p className="text-ink/60 dark:text-white/60">
-            {overallRating.toFixed(1)} rating
-            {totalReviewCount ? ` · ${totalReviewCount} Google reviews` : ""}
+            {OVERALL_RATING.toFixed(1)} rating · {TOTAL_REVIEW_COUNT} Google
+            reviews
           </p>
 
           <p className="mt-5 text-ink/60 dark:text-white/60">
@@ -126,16 +108,14 @@ export default function Testimonials({
             trusted us with their plumbing.
           </p>
 
-          {googleReviews?.mapsUri && (
-            <a
-              href={googleReviews.mapsUri}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-amber-700 hover:underline dark:text-gold"
-            >
-              Reviews from Google — see all &rarr;
-            </a>
-          )}
+          <a
+            href={GOOGLE_MAPS_URI}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-amber-700 hover:underline dark:text-gold"
+          >
+            Reviews from Google — see all &rarr;
+          </a>
         </div>
 
         <div
