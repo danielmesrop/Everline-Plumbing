@@ -3,7 +3,7 @@ const PHONE_DISPLAY = "647-544-8904";
 
 export default function Hero() {
   return (
-    <section className="relative flex h-screen min-h-[640px] w-full items-center justify-center overflow-hidden">
+    <section className="relative flex h-dvh min-h-[640px] w-full items-center justify-center overflow-hidden">
       <video
         className="absolute inset-0 h-full w-full object-cover"
         src="/hero-video.mp4"
