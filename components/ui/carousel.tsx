@@ -218,7 +218,7 @@ function CarouselPrevious({
       onClick={scrollPrev}
       aria-label="Previous slide"
       className={cn(
-        "absolute flex h-10 w-10 items-center justify-center rounded-full border border-black/15 bg-white/90 text-ink shadow-md backdrop-blur transition hover:border-gold hover:text-amber-700 disabled:pointer-events-none disabled:opacity-40 dark:border-white/15 dark:bg-black/60 dark:text-white dark:hover:text-gold",
+        "absolute flex h-11 w-11 items-center justify-center rounded-full border border-black/15 bg-white/90 text-ink shadow-md backdrop-blur transition hover:border-gold hover:text-amber-700 disabled:pointer-events-none disabled:opacity-40 dark:border-white/15 dark:bg-black/60 dark:text-white dark:hover:text-gold",
         orientation === "horizontal"
           ? "-left-4 top-1/2 -translate-y-1/2 md:-left-5"
           : "-top-4 left-1/2 -translate-x-1/2 rotate-90",
@@ -244,7 +244,7 @@ function CarouselNext({
       onClick={scrollNext}
       aria-label="Next slide"
       className={cn(
-        "absolute flex h-10 w-10 items-center justify-center rounded-full border border-black/15 bg-white/90 text-ink shadow-md backdrop-blur transition hover:border-gold hover:text-amber-700 disabled:pointer-events-none disabled:opacity-40 dark:border-white/15 dark:bg-black/60 dark:text-white dark:hover:text-gold",
+        "absolute flex h-11 w-11 items-center justify-center rounded-full border border-black/15 bg-white/90 text-ink shadow-md backdrop-blur transition hover:border-gold hover:text-amber-700 disabled:pointer-events-none disabled:opacity-40 dark:border-white/15 dark:bg-black/60 dark:text-white dark:hover:text-gold",
         orientation === "horizontal"
           ? "-right-4 top-1/2 -translate-y-1/2 md:-right-5"
           : "-bottom-4 left-1/2 -translate-x-1/2 rotate-90",

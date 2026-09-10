@@ -22,8 +22,10 @@ const MAX_PHOTOS = 4;
 const MAX_PHOTO_BYTES = 5 * 1024 * 1024; // 5MB
 const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp", "image/heic", "image/heif"];
 
+// text-base (16px) is deliberate here, not text-sm — iOS Safari
+// auto-zooms the page on focus for any input under 16px font size.
 const INPUT_CLASSES =
-  "w-full rounded-lg border border-black/15 bg-black/5 px-3.5 py-2.5 text-sm text-ink placeholder:text-ink/30 outline-none focus:border-gold dark:border-white/15 dark:bg-black/30 dark:text-white dark:placeholder:text-white/30";
+  "w-full rounded-lg border border-black/15 bg-black/5 px-3.5 py-2.5 text-base text-ink placeholder:text-ink/30 outline-none focus:border-gold dark:border-white/15 dark:bg-black/30 dark:text-white dark:placeholder:text-white/30";
 
 const LABEL_CLASSES = "mb-1 block text-sm font-semibold text-ink dark:text-white";
 
@@ -317,7 +319,7 @@ export default function Contact() {
                     key={option}
                     type="button"
                     onClick={() => setUrgency(option)}
-                    className={`rounded-full border px-4 py-1.5 text-sm font-semibold transition ${
+                    className={`rounded-full border px-4 py-2.5 text-sm font-semibold transition ${
                       urgency === option
                         ? "border-gold bg-gold text-ink"
                         : "border-black/15 text-ink hover:border-gold hover:text-amber-700 dark:border-white/15 dark:text-white dark:hover:text-gold"
