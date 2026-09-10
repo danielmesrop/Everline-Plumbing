@@ -6,77 +6,77 @@ import {
   type Testimonial,
 } from "@/components/ui/testimonial-v2";
 
-// Real Google reviews for Everline Plumbing, hardcoded.
-const REVIEWS: Testimonial[] = [
+const testimonials: Testimonial[] = [
   {
-    text: "Hard working team that is on time and always delivers great results! Highly recommend",
+    text: "Placeholder review — replace with a real customer testimonial. Fast, professional, and cleaned up after the job.",
     image:
-      "https://lh3.googleusercontent.com/a/ACg8ocK5DV0qBeO6VGaKg3upB81A7SzWrjFy3Vma5VrrxsRSQHqzPn8L=s128-c0x00000000-cc-rp-mo-ba2",
-    name: "Faisal Islam",
-    role: "Google review",
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=facearea&facepad=2&h=200",
+    name: "Sarah T.",
+    role: "Toronto, ON",
   },
   {
-    text: "Very professional and top notch quality service! thank you so much.",
+    text: "Placeholder review — replace with a real customer testimonial. Fixed our emergency leak within the hour.",
     image:
-      "https://lh3.googleusercontent.com/a/ACg8ocIKQHF4_u7nH0MGu-qLFAYTmmgt4vub6ZPDXyp4tKen2Rmw_Q=s128-c0x00000000-cc-rp-mo",
-    name: "Talal Al-Saymaree",
-    role: "Google review",
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=facearea&facepad=2&h=200",
+    name: "Mike R.",
+    role: "Mississauga, ON",
   },
   {
-    text: "Very high quality and professional service at reasonable cost.",
+    text: "Placeholder review — replace with a real customer testimonial. Great communication and fair pricing.",
     image:
-      "https://lh3.googleusercontent.com/a/ACg8ocKf6dehX6qPLcdyEzyMOYIZ0C21Tpz-jv-Jr-t6mp5reb6OvA=s128-c0x00000000-cc-rp-mo",
-    name: "Mohsen Alempour",
-    role: "Google review",
+      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=facearea&facepad=2&h=200",
+    name: "Priya K.",
+    role: "North York, ON",
   },
   {
-    text: "Amazing service provided. We have always reached out to them for any home improvement tasks and they execute it perfectly. Will recommend anyone else to go ahead with Everline.",
+    text: "Placeholder review — replace with a real customer testimonial. Our drain was completely clogged and they cleared it same-day.",
     image:
-      "https://lh3.googleusercontent.com/a/ACg8ocJCG70Uo3EZgEIRFREG8BsFPNYOcT9AsHXE0TPlBtqqqivw1w=s128-c0x00000000-cc-rp-mo-ba3",
-    name: "Anuj Kumar",
-    role: "Google review",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=facearea&facepad=2&h=200",
+    name: "James O.",
+    role: "Etobicoke, ON",
   },
   {
-    text: "Absolutely fantastic service! Everything was done perfectly, with great attention to detail and care. Professional, efficient, friendly, and clearly takes pride in the work.",
+    text: "Placeholder review — replace with a real customer testimonial. They repiped our basement bathroom and the quality was outstanding.",
     image:
-      "https://lh3.googleusercontent.com/a-/ALV-UjUeVCGesBWckLtoEwfOWUR2bi6b7SisX5X_AltpuaB4WFGf9IsOYA=s128-c0x00000000-cc-rp-mo",
-    name: "Marija Dimitrovska",
-    role: "Google review",
+      "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?q=80&w=200&auto=format&fit=facearea&facepad=2&h=200",
+    name: "Amanda Liu",
+    role: "Scarborough, ON",
+  },
+  {
+    text: "Placeholder review — replace with a real customer testimonial. Quick, clean install of our new tankless water heater.",
+    image:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&auto=format&fit=facearea&facepad=2&h=200",
+    name: "David Chen",
+    role: "Vaughan, ON",
+  },
+  {
+    text: "Placeholder review — replace with a real customer testimonial. Caught a slow leak before it caused real damage.",
+    image:
+      "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=200&auto=format&fit=facearea&facepad=2&h=200",
+    name: "Lauren Bianchi",
+    role: "Markham, ON",
+  },
+  {
+    text: "Placeholder review — replace with a real customer testimonial. Installed all new fixtures for our kitchen reno, right on schedule.",
+    image:
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=200&auto=format&fit=facearea&facepad=2&h=200",
+    name: "Tariq Nasser",
+    role: "Richmond Hill, ON",
+  },
+  {
+    text: "Placeholder review — replace with a real customer testimonial. Their 24/7 emergency line actually means 24/7.",
+    image:
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=200&auto=format&fit=facearea&facepad=2&h=200",
+    name: "Emily Foster",
+    role: "Brampton, ON",
   },
 ];
 
-const OVERALL_RATING = 5.0;
-const TOTAL_REVIEW_COUNT = 14;
-const GOOGLE_MAPS_URI = "https://maps.google.com/?cid=15546073881954974120";
-
-function splitIntoColumns<T>(items: T[], columnCount: number): T[][] {
-  const columns: T[][] = Array.from({ length: columnCount }, () => []);
-  items.forEach((item, i) => columns[i % columnCount].push(item));
-  return columns;
-}
-
-function Stars({ rating }: { rating: number }) {
-  return (
-    <div className="mb-3 flex items-center justify-center gap-1 text-gold">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <svg
-          key={i}
-          viewBox="0 0 20 20"
-          fill={i < Math.round(rating) ? "currentColor" : "none"}
-          stroke="currentColor"
-          strokeWidth={i < Math.round(rating) ? 0 : 1.5}
-          className="h-5 w-5"
-        >
-          <path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6L10 14.9l-5.4 2.9 1.3-6L1.3 7.7l6.1-.6L10 1.5z" />
-        </svg>
-      ))}
-    </div>
-  );
-}
+const firstColumn = testimonials.slice(0, 3);
+const secondColumn = testimonials.slice(3, 6);
+const thirdColumn = testimonials.slice(6, 9);
 
 export default function Testimonials() {
-  const columns = splitIntoColumns(REVIEWS, Math.min(3, REVIEWS.length));
-
   return (
     <section
       id="testimonials"
@@ -96,26 +96,10 @@ export default function Testimonials() {
           <h2 className="mt-3 font-serif text-3xl font-bold text-ink dark:text-white sm:text-4xl">
             What Our Customers Say
           </h2>
-
-          <Stars rating={OVERALL_RATING} />
-          <p className="text-ink/60 dark:text-white/60">
-            {OVERALL_RATING.toFixed(1)} rating · {TOTAL_REVIEW_COUNT} Google
-            reviews
-          </p>
-
           <p className="mt-5 text-ink/60 dark:text-white/60">
             Real feedback from homeowners across Toronto and the GTA who
             trusted us with their plumbing.
           </p>
-
-          <a
-            href={GOOGLE_MAPS_URI}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-amber-700 hover:underline dark:text-gold"
-          >
-            Reviews from Google — see all &rarr;
-          </a>
         </div>
 
         <div
@@ -123,16 +107,17 @@ export default function Testimonials() {
           role="region"
           aria-label="Scrolling Testimonials"
         >
-          {columns.map((col, i) => (
-            <TestimonialsColumn
-              key={i}
-              testimonials={col}
-              duration={15 + i * 2}
-              className={
-                i === 1 ? "hidden md:block" : i === 2 ? "hidden lg:block" : ""
-              }
-            />
-          ))}
+          <TestimonialsColumn testimonials={firstColumn} duration={15} />
+          <TestimonialsColumn
+            testimonials={secondColumn}
+            className="hidden md:block"
+            duration={19}
+          />
+          <TestimonialsColumn
+            testimonials={thirdColumn}
+            className="hidden lg:block"
+            duration={17}
+          />
         </div>
       </motion.div>
     </section>
